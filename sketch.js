@@ -7,6 +7,9 @@ function setup() {
 
   createCanvas(807, 807);
   background(color(204, 255, 255));
+  textSize(100);
+  textAlign(CENTER);
+  text("Click me!", width/2, height/2);
   heartbeat = new Ball(10);
 
   for (let beep = -3; beep < 8; beep++) {
