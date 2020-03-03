@@ -1,11 +1,12 @@
 var mic;
 let heartbeat = [];
-
+let sketchStarted = false;
 
 function setup() {
 
 
   createCanvas(807, 807);
+  background(color(204, 255, 255));
   heartbeat = new Ball(10);
 
   for (let beep = -3; beep < 8; beep++) {
@@ -14,29 +15,37 @@ function setup() {
     //Starts at zero, distributes to 11 heartbeat evenly with about 100px apart
   }
 
-  mic = new p5.AudioIn();
-  mic.start();
-
   frameRate(10);
 
 }
 
 function draw() {
-  //Animation
 
-  console.log("mic level " + mic.getLevel());
+  if(sketchStarted)
+  {
+    //Animation
+    console.log("mic level " + mic.getLevel());
 
-  let bgYellow = color(164, 213, 53);
-  let bgYellow2 = color(255, 168, 53);
-  let bgGreen = color(188, 255, 154);
-  let bgGreen2 = color(91, 255, 80);
-  let bgPink = color(255, 185, 244);
+    let bgYellow = color(164, 213, 53);
+    let bgYellow2 = color(255, 168, 53);
+    let bgGreen = color(188, 255, 154);
+    let bgGreen2 = color(91, 255, 80);
+    let bgPink = color(255, 185, 244);
 
-  clear();
+    clear();
 
 
-  bgColor(bgYellow, bgYellow2, bgGreen, bgGreen2);
+    bgColor(bgYellow, bgYellow2, bgGreen, bgGreen2);
+  }
 
+}
+
+function mousePressed() {
+  console.log("mousey");
+  mic = new p5.AudioIn();
+  mic.start();
+
+  sketchStarted = true;
 }
 
 function bunny(yellow, white) {
@@ -176,7 +185,7 @@ function eyes(color, color2) {
     //right
     line(width * .57, height * .48, width * 0.7, height * .5);
     line(width * .57, height * .48, width * 0.7, height * .44);
-  } else if (mic.getLevel() > 0.0001) {
+  } else if (mic.getLevel() > 0.1) {
     // Open
 
 
