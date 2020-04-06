@@ -1,4 +1,4 @@
-var mic;
+var mic = new AudioContext;
 let heartbeat = [];
 let sketchStarted = false;
 
