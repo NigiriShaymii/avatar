@@ -188,7 +188,7 @@ function eyes(color, color2) {
     //right
     line(width * .57, height * .48, width * 0.7, height * .5);
     line(width * .57, height * .48, width * 0.7, height * .44);
-  } else if (mic.getLevel() > 0.1) {
+  } else if (mic.getLevel() > 0.05) {
     // Open
 
 
